@@ -1,0 +1,6 @@
+[Unit]
+Description=Pull and deploy seapot-bar from GitHub
+
+[Service]
+Type=oneshot
+ExecStart=/opt/seapot-bar/deploy/autodeploy.sh
