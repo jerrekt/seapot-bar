@@ -6,159 +6,173 @@
 <meta name="robots" content="noindex">
 <title>Bar Guide · Seapot</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#0e0e0f;--card:#17171a;--line:#2a2a2e;--text:#ece9e2;--muted:#9a968d;--gold:#c9a24a;--gold-soft:rgba(201,162,74,.14);--warn:#e0a24a}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
-  header{text-align:center;padding:32px 0 20px}
-  .eyebrow{color:var(--gold);letter-spacing:.3em;font-size:11px;text-transform:uppercase}
-  h1{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(38px,10vw,56px);letter-spacing:.22em;line-height:1.1;margin:8px 0 2px;padding-left:.22em}
-  .tag{color:var(--muted);font-size:13px;letter-spacing:.04em}
-  .rule{width:64px;height:1px;background:var(--gold);margin:14px auto 12px;opacity:.8}
-  header a{color:var(--muted);font-size:13px;text-decoration:none}
-  header a:hover{color:var(--gold)}
+:root{--black:#0a0a0a;--card:#151515;--border:#262626;--gold:#c9a84c;--gold-l:#e8c96a;--white:#f0ede8;--muted:#808080;--amber:#fbd38d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--black);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.4;max-width:780px;margin:0 auto;padding-bottom:24px}
 
-  .bar{position:sticky;top:0;z-index:10;background:rgba(14,14,15,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 0}
-  .bar .wrap{display:flex;flex-direction:column;gap:10px}
-  input{width:100%;background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--text);font:inherit;padding:10px 14px;outline:none}
-  input:focus{border-color:var(--gold)}
-  .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
-  .chips::-webkit-scrollbar{display:none}
-  .chips button{flex:none;background:none;color:var(--muted);font:500 13px Inter,sans-serif;padding:6px 14px;border:1px solid var(--line);border-radius:999px;cursor:pointer}
-  .chips button.on{color:var(--bg);background:var(--gold);border-color:var(--gold)}
+/* HERO (matches menu.adsuaracloud.com) */
+.hero{padding:12px 16px 8px;text-align:center;border-bottom:1px solid var(--border)}
+.hero h1{font-family:'Cinzel',serif;font-size:34px;font-weight:900;letter-spacing:.06em;color:var(--gold);line-height:1}
+.hero-sub{color:var(--muted);font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-top:3px}
+.hero-sub a{color:var(--gold);text-decoration:none}
 
-  .grid{display:grid;gap:14px;grid-template-columns:1fr;padding:20px 0 48px}
-  @media(min-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
-  @media(min-width:1060px){.grid{grid-template-columns:repeat(3,1fr)}}
+/* STICKY SEARCH + CHIPS */
+.bar{position:sticky;top:0;z-index:10;background:rgba(10,10,10,.97);border-bottom:1px solid var(--border);padding:8px 12px;display:flex;flex-direction:column;gap:7px}
+input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--white);font:inherit;font-size:16px;padding:7px 11px;outline:none}
+input:focus{border-color:var(--gold)}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;background:none;color:var(--muted);font:600 11px/1 inherit;letter-spacing:.08em;text-transform:uppercase;padding:6px 11px;border:1px solid var(--border);border-radius:999px;cursor:pointer}
+.chips button.on{color:#000;background:var(--gold);border-color:var(--gold)}
 
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
-  .cat{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
-  .card h2{font-family:"Playfair Display",serif;font-size:21px;line-height:1.2;margin:2px 0 4px}
-  .note{color:var(--muted);font-size:13px;font-style:italic}
-  .meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}
-  .meta span{font-size:12px;background:var(--gold-soft);color:var(--gold);border-radius:6px;padding:3px 8px}
-  .meta span.chk{background:rgba(224,162,74,.12);color:var(--warn);border:1px dashed rgba(224,162,74,.5)}
-  h3{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:12px 0 6px;border-top:1px solid var(--line);padding-top:10px}
-  ul.ing{list-style:none}
-  ul.ing li{display:flex;gap:10px;padding:3px 0;font-size:14px}
-  ul.ing b{flex:none;width:62px;color:var(--gold);font-weight:600}
-  ul.ing i{color:var(--muted);font-size:12.5px}
-  ol.steps{padding-left:20px;font-size:14px}
-  ol.steps li{margin:4px 0}
-  ol.steps li::marker{color:var(--gold);font-weight:600}
-  .empty{text-align:center;color:var(--muted);padding:40px 0;grid-column:1/-1}
-  footer{text-align:center;color:var(--muted);font-size:12px;padding:0 0 32px}
+/* SECTIONS */
+main{padding:0 12px}
+.divider{display:flex;align-items:center;gap:10px;padding:12px 0 6px;color:var(--gold);font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5}
+.age{text-align:center;font-size:11px;color:var(--amber);margin:-2px 0 6px}
+.list{display:grid;gap:5px;grid-template-columns:minmax(0,1fr);align-items:start}
+@media(min-width:640px){.list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* RECIPE CARD — collapsed = one line, tap to open */
+.rc{min-width:0;background:var(--card);border:1px solid var(--border);border-radius:8px}
+.rc[open]{border-color:var(--gold);box-shadow:0 0 10px rgba(201,168,76,.18)}
+summary{list-style:none;cursor:pointer;padding:7px 10px}
+summary::-webkit-details-marker{display:none}
+.t{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600}
+.t .chev{margin-left:auto;color:var(--muted);font-size:9px;transition:transform .15s}
+.rc[open] .chev{transform:rotate(90deg);color:var(--gold)}
+.s{color:var(--muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.rc[open] .s{display:none}
+.chk{font-size:8px;font-weight:800;letter-spacing:.04em;color:var(--amber);border:1px dashed var(--amber);border-radius:3px;padding:0 4px;line-height:14px}
+.body{padding:0 10px 9px}
+.meta{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:5px}
+.meta span{font-size:10.5px;background:rgba(201,168,76,.12);color:var(--gold-l);border:1px solid rgba(201,168,76,.35);border-radius:4px;padding:1px 6px}
+.note{font-size:11px;color:var(--amber);margin-bottom:5px}
+h3{font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:5px 0 2px;padding-top:5px;border-top:1px solid var(--border)}
+ul{list-style:none}
+ul li{display:flex;gap:8px;font-size:12.5px;padding:1px 0;border-bottom:1px solid #1c1c1c}
+ul b{flex:none;width:54px;color:var(--gold);font-weight:600}
+ul i{color:var(--muted);font-size:11px;font-style:normal}
+ol{padding-left:17px;font-size:12.5px}
+ol li{margin:1px 0}
+ol li::marker{color:var(--gold);font-weight:700}
+.empty{text-align:center;color:var(--muted);padding:30px 0}
+.foot{text-align:center;margin-top:12px;color:var(--muted);font-size:11px}
 </style>
 </head>
 <body>
-<header class="wrap">
-  <div class="eyebrow">Bar Guide · Staff</div>
-  <h1>SEAPOT</h1>
-  <div class="tag">Korean BBQ &amp; Hot Pot</div>
-  <div class="rule"></div>
-  <a href="https://menu.adsuaracloud.com">Customer menu →</a>
-</header>
 
-<div class="bar"><div class="wrap">
+<div class="hero">
+  <h1>SEAPOT</h1>
+  <div class="hero-sub">Bar Guide · Staff Only · <a href="https://menu.adsuaracloud.com">Menu ↗</a></div>
+</div>
+
+<div class="bar">
   <input id="q" type="search" placeholder="Search drink or ingredient…" autocomplete="off">
   <div class="chips" id="chips"></div>
-</div></div>
+</div>
 
-<main class="wrap"><div class="grid" id="grid"></div></main>
-<footer>Questions about a recipe? Ask a manager before serving.</footer>
+<main id="main"></main>
+<div class="foot">Not sure? Ask a manager before serving.</div>
 
 <script>
-// ing: [amount, ingredient, note]. chk:1 = Seapot recipe not confirmed yet (shows a badge).
+// ing: [amount, ingredient, note]   chk:1 = proportions not confirmed yet
 const D=[
- // ── Cocktails (21+) ──
- {cat:"Cocktails",name:"Mai Tai",glass:"Rocks",garnish:"Lime wedge & mint sprig",
-  ing:[["1 oz","Spiced rum"],["1 oz","Dark rum","float"],["0.5 oz","Orange curaçao"],["0.5 oz","Coconut syrup"],["0.5 oz","Fresh lime juice"],["1 oz","Orange juice"],["","Crushed ice"]],
-  steps:["Fill a shaker with ice; add spiced rum, curaçao, coconut syrup, lime juice and orange juice.","Shake well and pour into a rocks glass with crushed ice.","Float the dark rum on top over the back of a spoon.","Garnish with a lime wedge and mint sprig."]},
- {cat:"Cocktails",name:"Cuba Libre",glass:"Highball",garnish:"Lime wedge",
-  ing:[["2 oz","Light rum"],["4 oz","Coke"],["0.5 oz","Fresh lime juice"],["","Ice"]],
-  steps:["Fill a highball glass with ice.","Add rum and lime juice.","Top with Coke and stir gently.","Garnish with a lime wedge."]},
+ // ── Cocktails ── (ingredients per menu)
+ {cat:"Cocktails",name:"Mai Tai",glass:"Rocks",garnish:"Orange slice & cherry",
+  ing:[["1 oz","White rum"],["1 oz","Dark rum","float"],["2 oz","Orange juice"],["2 oz","Pineapple juice"],["0.25 oz","Grenadine"],["","Ice"]],
+  steps:["Fill glass with ice; add white rum, OJ and pineapple. Stir.","Drizzle grenadine.","Float dark rum on top over a spoon.","Garnish."]},
  {cat:"Cocktails",name:"Tequila Sunrise",glass:"Highball",garnish:"Orange slice & cherry",
   ing:[["2 oz","Tequila"],["4 oz","Orange juice"],["0.5 oz","Grenadine"],["","Ice"]],
-  steps:["Fill a highball glass with ice; add tequila and orange juice. Stir.","Slowly pour grenadine over the back of a spoon so it sinks.","Garnish with an orange slice and a cherry. Don't stir after the grenadine."]},
+  steps:["Ice, tequila, OJ. Stir.","Pour grenadine slowly so it sinks — don't stir.","Garnish."]},
+ {cat:"Cocktails",name:"Cuba Libre",glass:"Highball",garnish:"Lime wedge",
+  ing:[["2 oz","Rum"],["0.5 oz","Lime juice"],["4 oz","Cola"],["","Ice"]],
+  steps:["Ice, rum, lime.","Top with cola, stir once.","Lime wedge."]},
  {cat:"Cocktails",name:"Old Fashioned",glass:"Rocks",garnish:"Orange twist & cherry",
-  ing:[["2 oz","Bourbon or rye"],["0.25 oz","Simple syrup"],["2–3 dash","Angostura bitters"],["splash","Water"],["","Ice"]],
-  steps:["Add simple syrup, bitters and a splash of water to a rocks glass. Stir.","Add ice and the whiskey; stir until chilled.","Garnish with an orange twist and cherry."]},
- {cat:"Cocktails",name:"Gin & Tonic",glass:"Highball",garnish:"Lime wedge",
-  ing:[["2 oz","Gin"],["4–6 oz","Tonic water"],["","Ice"]],
-  steps:["Fill a highball glass with ice.","Add gin, top with tonic, stir gently.","Garnish with a lime wedge."]},
- {cat:"Cocktails",name:"Long Island Iced Tea",glass:"Highball",garnish:"Lemon wedge",
-  ing:[["0.5 oz","Vodka"],["0.5 oz","Light rum"],["0.5 oz","Gin"],["0.5 oz","Tequila"],["0.5 oz","Triple sec"],["1 oz","Sour mix"],["splash","Coke","for color"],["","Ice"]],
-  steps:["Fill a highball glass with ice.","Add vodka, rum, gin, tequila, triple sec and sour mix.","Top with a splash of Coke until it looks like iced tea; stir once.","Garnish with a lemon wedge."]},
- {cat:"Cocktails",name:"Moscow Mule",glass:"Copper mug",garnish:"Lime wedge",
-  ing:[["2 oz","Vodka"],["0.5 oz","Fresh lime juice"],["4–6 oz","Ginger beer"],["","Ice"]],
-  steps:["Fill the mug with ice; add vodka and lime juice.","Top with ginger beer and stir gently.","Garnish with a lime wedge."]},
- {cat:"Cocktails",name:"Mimosa",glass:"Champagne flute",garnish:"Orange slice (optional)",
-  ing:[["3 oz","Champagne","chilled"],["3 oz","Orange juice","chilled"]],
-  steps:["Pour champagne into the flute first, tilted, so it doesn't foam over.","Top slowly with orange juice. No stirring.","Garnish with an orange slice if using."]},
+  ing:[["2 oz","Bourbon"],["0.25 oz","Simple syrup"],["2–3 dash","Angostura bitters"],["","Ice"]],
+  steps:["Syrup + bitters in glass, stir.","Add ice and bourbon; stir until cold.","Orange twist & cherry."]},
+ {cat:"Cocktails",name:"Gin & Tonic",note:"Menu lists soda water + lemon",glass:"Highball",garnish:"Lemon wedge",
+  ing:[["2 oz","Gin"],["4 oz","Soda water","or tonic"],["","Ice"]],
+  steps:["Ice, gin.","Top with soda, stir once.","Lemon wedge."]},
+ {cat:"Cocktails",name:"Long Island",glass:"Highball",garnish:"Lemon wedge",
+  ing:[["0.5 oz","Tequila"],["0.5 oz","Vodka"],["0.5 oz","Rum"],["0.5 oz","Gin"],["0.5 oz","Triple sec"],["1 oz","Lemon juice / sour"],["splash","Cola"],["","Ice"]],
+  steps:["Ice, all spirits + lemon.","Splash cola for color, stir once.","Lemon wedge."]},
+ {cat:"Cocktails",name:"Moscow Mule",glass:"Mug / highball",garnish:"Lime wedge",
+  ing:[["2 oz","Vodka"],["0.5 oz","Lime juice"],["4 oz","Ginger beer"],["","Ice"]],
+  steps:["Ice, vodka, lime.","Top with ginger beer, stir once.","Lime wedge."]},
+ {cat:"Cocktails",name:"Mimosa",glass:"Flute",garnish:"—",
+  ing:[["3 oz","Champagne"],["3 oz","Orange juice"]],
+  steps:["Champagne first, tilted.","Top with OJ. No stir."]},
 
  // ── Soju ──
- {cat:"Soju",name:"Soju (bottle)",note:"12 oz bottle",glass:"Soju shot glasses",garnish:"—",
-  ing:[["1","Bottle of soju","chilled"]],
-  steps:["Serve straight from the cooler — soju should be cold.","Bring one shot glass per guest.","Check ID for everyone at the table who'll drink."]},
- {cat:"Soju",name:"Soju Cocktail",note:"30 oz pitcher",chk:1,glass:"Pitcher + soju glasses",garnish:"Fruit slices",
-  ing:[["12 oz","Soju","1 bottle"],["12 oz","Sprite"],["4 oz","Flavor juice or syrup","guest's pick"],["","Ice"]],
-  steps:["Fill the pitcher about ⅓ with ice.","Add soju and the flavor.","Top with Sprite and stir gently.","Garnish and serve with soju glasses."]},
- {cat:"Soju",name:"Soju Cocktail Tower",chk:1,glass:"Tower",garnish:"Fruit slices",
-  ing:[["","Soju cocktail batch","scale up the pitcher recipe"],["","Ice core","frozen"]],
-  steps:["Insert a frozen ice core into the tower.","Batch the soju cocktail and fill the tower.","Bring to the table with soju glasses."]},
+ {cat:"Soju",name:"Soju Cocktail",note:"Mix 1–2 flavors: Peach · Kiwi · Passion Fruit · Lychee · Mango · Watermelon · Yogurt · Strawberry · Guava",chk:1,glass:"30 oz pitcher",garnish:"—",
+  ing:[["12 oz","Soju","1 bottle"],["4 oz","Flavor syrup","1–2 flavors"],["","Sprite","top"],["","Ice"]],
+  steps:["Pitcher ⅓ ice.","Add soju + flavor(s).","Top with Sprite, stir.","Serve with soju glasses."]},
+ {cat:"Soju",name:"Soju Cocktail Tower",chk:1,glass:"Tower",garnish:"—",
+  ing:[["","Soju cocktail","scale up pitcher recipe"],["","Ice core"]],
+  steps:["Ice core in tower.","Batch soju cocktail, fill.","Serve with soju glasses."]},
+ {cat:"Soju",name:"Soju Bottle",note:"Original · Zero Sugar · Peach · Yogurt · Apple · Strawberry · Apple Mango · Green Grape",glass:"Soju glasses",garnish:"—",
+  ing:[["12 oz","Soju","chilled"]],
+  steps:["Serve cold with a glass per drinker.","Check ID for everyone drinking."]},
+ {cat:"Soju",name:"Sake / Yuzu Bomb",chk:1,glass:"Beer glass + sake shot",garnish:"—",
+  ing:[["1","Bottled beer"],["1 shot","Sake or yuzu soju"]],
+  steps:["Pour beer into glass.","Serve shot balanced on chopsticks over the glass."]},
 
- // ── Mocktails ──
- {cat:"Mocktails",name:"Raspberry Lemon Drop",chk:1,glass:"Highball (sugar rim)",garnish:"Lemon wheel",
-  ing:[["1 oz","Raspberry syrup"],["1 oz","Fresh lemon juice"],["4 oz","Lemonade"],["splash","Sprite"],["","Sugar (rim)"],["","Ice"]],
-  steps:["Rim the glass with sugar, then fill with ice.","Shake raspberry syrup, lemon juice and lemonade with ice.","Strain into the glass and top with Sprite.","Garnish with a lemon wheel."]},
+ // ── Mocktails ── (ingredients per menu, $8)
+ {cat:"Mocktails",name:"Raspberry Lemon Drop",chk:1,glass:"Highball",garnish:"Lemon wheel",
+  ing:[["1 oz","Fresh lemon juice"],["1 oz","Raspberry syrup"],["1 oz","Coconut syrup"],["3 oz","Pineapple juice"],["","Ice"]],
+  steps:["Shake everything with ice.","Pour into glass.","Lemon wheel."]},
  {cat:"Mocktails",name:"Strawberry Breeze",chk:1,glass:"Highball",garnish:"Strawberry",
-  ing:[["1.5 oz","Strawberry purée"],["0.5 oz","Fresh lime juice"],["2 oz","Pineapple juice"],["3 oz","Sprite"],["","Ice"]],
-  steps:["Fill a highball glass with ice.","Add strawberry purée, lime and pineapple juice; stir.","Top with Sprite.","Garnish with a strawberry on the rim."]},
- {cat:"Mocktails",name:"Ube Colada",chk:1,glass:"Hurricane / tall",garnish:"Pineapple wedge",
+  ing:[["1.5 oz","Strawberry syrup"],["2 oz","Piña colada mix"],["2 oz","Sweet & sour"],["","Ice"]],
+  steps:["Shake everything with ice.","Pour into glass.","Strawberry garnish."]},
+ {cat:"Mocktails",name:"Ube Colada",chk:1,glass:"Highball",garnish:"Pineapple wedge",
   ing:[["1 oz","Ube syrup"],["2 oz","Coconut cream"],["3 oz","Pineapple juice"],["","Ice"]],
-  steps:["Shake ube syrup, coconut cream and pineapple juice hard with ice (or blend).","Pour into the glass.","Garnish with a pineapple wedge."]},
- {cat:"Mocktails",name:"Sweet Heart",note:"Recipe not set — ask a manager",chk:1,glass:"—",garnish:"—",
-  ing:[["","TBD"]],
-  steps:["Recipe to be added."]},
+  steps:["Shake hard with ice.","Pour into glass.","Pineapple wedge."]},
+ {cat:"Mocktails",name:"Sweet Heart",chk:1,glass:"Highball",garnish:"Lime wheel",
+  ing:[["1.5 oz","Peach syrup"],["3 oz","Sweet & sour"],["0.5 oz","Lime juice"],["","Sprite","splash"],["","Ice"]],
+  steps:["Shake peach, sweet & sour, lime with ice.","Pour, top with a splash of Sprite.","Lime wheel."]},
  {cat:"Mocktails",name:"Mai Tai (Virgin)",chk:1,glass:"Rocks",garnish:"Orange slice & cherry",
-  ing:[["2 oz","Pineapple juice"],["2 oz","Orange juice"],["0.5 oz","Coconut syrup"],["0.5 oz","Fresh lime juice"],["0.25 oz","Grenadine","float"],["","Crushed ice"]],
-  steps:["Shake pineapple, orange, coconut syrup and lime with ice.","Pour into a rocks glass with crushed ice.","Float grenadine on top.","Garnish with an orange slice and cherry."]},
- {cat:"Mocktails",name:"Sunrise (Virgin)",chk:1,glass:"Highball",garnish:"Orange slice & cherry",
-  ing:[["5 oz","Orange juice"],["splash","Sprite"],["0.5 oz","Grenadine"],["","Ice"]],
-  steps:["Fill a highball glass with ice; add orange juice and a splash of Sprite.","Slowly pour grenadine so it sinks.","Garnish with an orange slice and cherry."]},
+  ing:[["2.5 oz","Pineapple juice"],["2.5 oz","Orange juice"],["0.5 oz","Lemon juice"],["","Ice"]],
+  steps:["Shake with ice.","Pour into glass.","Garnish."]},
+ {cat:"Mocktails",name:"Sunrise (Virgin)",glass:"Highball",garnish:"Orange slice & cherry",
+  ing:[["5 oz","Orange juice"],["0.5 oz","Grenadine"],["","Ice"]],
+  steps:["Ice, OJ.","Pour grenadine slowly so it sinks.","Garnish."]},
 
  // ── Non-Alc ──
- {cat:"Non-Alc",name:"Shirley Temple",glass:"Highball",garnish:"Maraschino cherry",
+ {cat:"Non-Alc",name:"Fresh Lemonade",note:"Peach · Mango · Yogurt · Lychee · Passion Fruit · Kiwi · Watermelon · Guava · Strawberry",chk:1,glass:"Highball",garnish:"Lemon wheel",
+  ing:[["1.5 oz","Fresh lemon juice"],["1 oz","Simple syrup"],["1 oz","Flavor syrup"],["4 oz","Water"],["","Ice"]],
+  steps:["Shake lemon, syrup, flavor, water with ice.","Pour into glass.","Lemon wheel."]},
+ {cat:"Non-Alc",name:"Shirley Temple",glass:"Highball",garnish:"Cherry",
   ing:[["6 oz","Sprite"],["0.5 oz","Grenadine"],["","Ice"]],
-  steps:["Fill a highball glass with ice.","Pour in Sprite, add grenadine, stir lightly.","Garnish with a cherry."]},
- {cat:"Non-Alc",name:"Fresh Lemonade",chk:1,glass:"Highball",garnish:"Lemon wheel",
-  ing:[["1.5 oz","Fresh lemon juice"],["1.5 oz","Simple syrup"],["5 oz","Cold water"],["","Ice"]],
-  steps:["Add lemon juice and simple syrup to a shaker with ice.","Add water and shake briefly.","Pour into a highball glass and garnish with a lemon wheel."]}
+  steps:["Ice, Sprite.","Grenadine, stir lightly.","Cherry."]}
 ];
 
 const cats=["All",...new Set(D.map(d=>d.cat))];
 let cur="All";
-const chips=document.getElementById('chips'), grid=document.getElementById('grid'), q=document.getElementById('q');
+const chips=document.getElementById('chips'),main=document.getElementById('main'),q=document.getElementById('q');
 chips.innerHTML=cats.map(c=>`<button data-c="${c}"${c===cur?' class="on"':''}>${c}</button>`).join('');
 chips.onclick=e=>{const b=e.target.closest('button');if(!b)return;cur=b.dataset.c;[...chips.children].forEach(x=>x.classList.toggle('on',x===b));render()};
 q.oninput=render;
 
-function card(d){
-  return `<article class="card">
-    <div class="cat">${d.cat}</div><h2>${d.name}</h2>${d.note?`<div class="note">${d.note}</div>`:''}
-    <div class="meta"><span>🥃 ${d.glass}</span><span>🍋 ${d.garnish}</span>${d.chk?'<span class="chk">⚠ Confirm recipe</span>':''}</div>
-    <h3>Ingredients</h3>
-    <ul class="ing">${d.ing.map(([a,n,t])=>`<li><b>${a}</b><span>${n}${t?` <i>(${t})</i>`:''}</span></li>`).join('')}</ul>
-    <h3>Steps</h3>
-    <ol class="steps">${d.steps.map(s=>`<li>${s}</li>`).join('')}</ol>
-  </article>`;
+function card(d,open){
+  const line=d.ing.filter(i=>!/^ice/i.test(i[1])).map(i=>i[1]).join(' · ');
+  return `<details class="rc"${open?' open':''}><summary>
+    <div class="t">${d.name}${d.chk?'<span class="chk">CONFIRM</span>':''}<span class="chev">▶</span></div>
+    <div class="s">${d.glass} — ${line}</div></summary>
+    <div class="body">${d.note?`<div class="note">${d.note}</div>`:''}
+    <div class="meta"><span>🥃 ${d.glass}</span><span>🍋 ${d.garnish}</span></div>
+    <ul>${d.ing.map(([a,n,t])=>`<li><b>${a}</b><span>${n}${t?` <i>· ${t}</i>`:''}</span></li>`).join('')}</ul>
+    <h3>Steps</h3><ol>${d.steps.map(s=>`<li>${s}</li>`).join('')}</ol></div></details>`;
 }
 function render(){
   const s=q.value.trim().toLowerCase();
   const r=D.filter(d=>(cur==="All"||d.cat===cur)&&(!s||(d.name+' '+(d.note||'')+' '+d.ing.map(i=>i[1]).join(' ')).toLowerCase().includes(s)));
-  grid.innerHTML=r.length?r.map(card).join(''):'<div class="empty">No drinks match.</div>';
+  if(!r.length){main.innerHTML='<div class="empty">No drinks match.</div>';return}
+  const open=r.length===1;
+  main.innerHTML=[...new Set(r.map(d=>d.cat))].map(c=>
+    `<div class="divider">${c}</div>${c==="Cocktails"||c==="Soju"?'<div class="age">🔞 Check ID — 21+</div>':''}<div class="list">${r.filter(d=>d.cat===c).map(d=>card(d,open)).join('')}</div>`).join('');
 }
 render();
 </script>
