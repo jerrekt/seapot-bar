@@ -65,6 +65,12 @@ ol li::marker{color:var(--gold);font-weight:700}
 .sig{text-align:right;padding:4px 12px 0;color:#555;font-size:9px;letter-spacing:.04em}
 .meta button.gl{font:inherit;font-size:10.5px;cursor:pointer;background:rgba(201,168,76,.12);color:var(--gold-l);border:1px solid rgba(201,168,76,.35);border-radius:4px;padding:1px 6px}
 .meta button.gl::after{content:" ⓘ";color:var(--gold);opacity:.8}
+.gi{display:inline-block;vertical-align:-4px;margin-right:4px}
+.meta .gi{background:none;border:0;padding:0;border-radius:0}
+.gi svg{width:13px;height:18px;display:block;fill:none;stroke:currentColor;stroke-width:9;stroke-linejoin:round;stroke-linecap:round}
+.gi svg .liq{fill:currentColor;stroke:none;opacity:.25}
+.gi svg .ice{display:none}
+.s .gi{color:var(--gold);opacity:.85}
 .gm{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;padding:16px}
 .gm.on{display:flex}
 .gm-box{background:var(--card);border:1px solid var(--gold);border-radius:12px;box-shadow:0 0 22px rgba(201,168,76,.3);width:min(300px,100%);padding:16px;text-align:center}
@@ -180,9 +186,9 @@ function card(d,open){
   const line=d.ing.filter(i=>!/^ice/i.test(i[1])).map(i=>i[1]).join(' · ');
   return `<details class="rc"${open?' open':''}><summary>
     <div class="t">${d.name}${d.chk?'<span class="chk">CONFIRM</span>':''}${d.price?`<span class="pr">${d.price}</span>`:''}<span class="chev">▶</span></div>
-    <div class="s">${d.glass} — ${line}</div></summary>
+    <div class="s">${gi(d.glass)}${d.glass} — ${line}</div></summary>
     <div class="body">${d.note?`<div class="note">${d.note}</div>`:''}
-    <div class="meta"><button class="gl" data-g="${d.glass}">🥃 ${d.glass}</button><span>🍋 ${d.garnish}</span></div>
+    <div class="meta"><button class="gl" data-g="${d.glass}">${gi(d.glass)}${d.glass}</button><span>🍋 ${d.garnish}</span></div>
     <ul>${d.ing.map(([a,n,t])=>`<li><b>${a}</b><span>${n}${t?` <i>· ${t}</i>`:''}</span></li>`).join('')}</ul>
     <h3>Steps</h3><ol>${d.steps.map(s=>`<li>${s}</li>`).join('')}</ol></div></details>`;
 }
@@ -214,6 +220,7 @@ const GW={
  bomb:{name:"Beer Glass + Shot",desc:"Beer in a pint, sake shot balanced on chopsticks",
   svg:`<svg viewBox="0 0 100 140"><path class="liq" d="M30 56 L33 124 L67 124 L70 56Z"/><path d="M27 40 L32 126 Q32 132 38 132 L62 132 Q68 132 68 126 L73 40"/><path d="M14 34 L86 30 M14 40 L86 36"/><path d="M42 12 L44 32 L56 32 L58 12"/><path class="liq" d="M43 20 L44 30 L56 30 L57 20Z"/></svg>`}
 };
+const gi=g=>`<span class="gi">${GW[glassKey(g)].svg}</span>`;
 function glassKey(g){g=g.toLowerCase();
   return g.includes('pitcher')?'pitcher':g.includes('tower')?'tower':g.includes('soju')?'soju':g.includes('beer')?'bomb':
          g.includes('mug')?'mug':g.includes('flute')?'flute':g.includes('rocks')?'rocks':'highball';}
