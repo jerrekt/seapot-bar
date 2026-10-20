@@ -18,6 +18,9 @@ Owner: BJ (GitHub `jerrekt`). Sister sites: `jerrekt/seapot-menu` (customer menu
 ## Hosting
 Same as seapot-menu: CT 202 `menu-server`, nginx root `/opt/seapot-bar/site`, `seapot-bar-autodeploy.timer` (1 min), Cloudflare Tunnel `seapot-menu-sj` (locally managed, `/etc/cloudflared/config.yml`). nginx block must include `listen [::]:80;` (cloudflared uses `::1`).
 
+## Gotchas
+- nginx sends `Cache-Control: no-cache, must-revalidate` so pushes show up right away. Still stale → Cloudflare Purge Everything.
+
 ## Open items
 - Real specs needed for CONFIRM drinks (soju cocktail/tower, mocktails, lemonade, sake bomb).
 - Gin & Tonic uses soda water per the menu — confirm intentional.
