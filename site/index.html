@@ -41,6 +41,8 @@ main{padding:0 12px}
 summary{list-style:none;cursor:pointer;padding:7px 10px}
 summary::-webkit-details-marker{display:none}
 .t{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600}
+.t .pr{margin-left:auto;color:var(--gold);font-size:12px;font-weight:600}
+.t .pr+.chev{margin-left:6px}
 .t .chev{margin-left:auto;color:var(--muted);font-size:9px;transition:transform .15s}
 .rc[open] .chev{transform:rotate(90deg);color:var(--gold)}
 .s{color:var(--muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
@@ -93,76 +95,76 @@ ol li::marker{color:var(--gold);font-weight:700}
 <div class="sig">hi from jerrekt</div>
 
 <script>
-// ing: [amount, ingredient, note]   chk:1 = proportions not confirmed yet
+// ing: [amount, ingredient, note]   chk:1 = proportions not confirmed yet   price: must match menu.adsuaracloud.com
 const D=[
  // ── Cocktails ── (ingredients per menu)
- {cat:"Cocktails",name:"Mai Tai",glass:"Rocks",garnish:"Orange slice & cherry",
+ {cat:"Cocktails",name:"Mai Tai",price:"$13",glass:"Rocks",garnish:"Orange slice & cherry",
   ing:[["1 oz","White rum"],["1 oz","Dark rum","float"],["2 oz","Orange juice"],["2 oz","Pineapple juice"],["0.25 oz","Grenadine"],["","Ice"]],
   steps:["Fill glass with ice; add white rum, OJ and pineapple. Stir.","Drizzle grenadine.","Float dark rum on top over a spoon.","Garnish."]},
- {cat:"Cocktails",name:"Tequila Sunrise",glass:"Highball",garnish:"Orange slice & cherry",
+ {cat:"Cocktails",name:"Tequila Sunrise",price:"$14",glass:"Highball",garnish:"Orange slice & cherry",
   ing:[["2 oz","Tequila"],["4 oz","Orange juice"],["0.5 oz","Grenadine"],["","Ice"]],
   steps:["Ice, tequila, OJ. Stir.","Pour grenadine slowly so it sinks — don't stir.","Garnish."]},
- {cat:"Cocktails",name:"Cuba Libre",glass:"Highball",garnish:"Lime wedge",
+ {cat:"Cocktails",name:"Cuba Libre",price:"$13",glass:"Highball",garnish:"Lime wedge",
   ing:[["2 oz","Rum"],["0.5 oz","Lime juice"],["4 oz","Cola"],["","Ice"]],
   steps:["Ice, rum, lime.","Top with cola, stir once.","Lime wedge."]},
- {cat:"Cocktails",name:"Old Fashioned",glass:"Rocks",garnish:"Orange twist & cherry",
+ {cat:"Cocktails",name:"Old Fashioned",price:"$14",glass:"Rocks",garnish:"Orange twist & cherry",
   ing:[["2 oz","Bourbon"],["0.25 oz","Simple syrup"],["2–3 dash","Angostura bitters"],["","Ice"]],
   steps:["Syrup + bitters in glass, stir.","Add ice and bourbon; stir until cold.","Orange twist & cherry."]},
- {cat:"Cocktails",name:"Gin & Tonic",note:"Menu lists soda water + lemon",glass:"Highball",garnish:"Lemon wedge",
+ {cat:"Cocktails",name:"Gin & Tonic",price:"$14",note:"Menu lists soda water + lemon",glass:"Highball",garnish:"Lemon wedge",
   ing:[["2 oz","Gin"],["4 oz","Soda water","or tonic"],["","Ice"]],
   steps:["Ice, gin.","Top with soda, stir once.","Lemon wedge."]},
- {cat:"Cocktails",name:"Long Island",glass:"Highball",garnish:"Lemon wedge",
+ {cat:"Cocktails",name:"Long Island",price:"$14",glass:"Highball",garnish:"Lemon wedge",
   ing:[["0.5 oz","Tequila"],["0.5 oz","Vodka"],["0.5 oz","Rum"],["0.5 oz","Gin"],["0.5 oz","Triple sec"],["1 oz","Lemon juice / sour"],["splash","Cola"],["","Ice"]],
   steps:["Ice, all spirits + lemon.","Splash cola for color, stir once.","Lemon wedge."]},
- {cat:"Cocktails",name:"Moscow Mule",glass:"Mug / highball",garnish:"Lime wedge",
+ {cat:"Cocktails",name:"Moscow Mule",price:"$14",glass:"Mug / highball",garnish:"Lime wedge",
   ing:[["2 oz","Vodka"],["0.5 oz","Lime juice"],["4 oz","Ginger beer"],["","Ice"]],
   steps:["Ice, vodka, lime.","Top with ginger beer, stir once.","Lime wedge."]},
- {cat:"Cocktails",name:"Green Tea Cocktail",note:"No tea in it — not the hot green tea",glass:"Rocks",garnish:"Lemon wedge",
+ {cat:"Cocktails",name:"Green Tea Cocktail",price:"$14",note:"No tea in it — not the hot green tea",glass:"Rocks",garnish:"Lemon wedge",
   ing:[["1 oz","Irish whiskey","Jameson"],["1 oz","Peach schnapps"],["1 oz","Sour mix"],["splash","Sprite"],["","Ice"]],
   steps:["Shake whiskey, peach schnapps and sour mix with ice.","Pour into a rocks glass with ice.","Top with a splash of Sprite.","Lemon wedge."]},
- {cat:"Cocktails",name:"Mimosa",glass:"Flute",garnish:"—",
+ {cat:"Cocktails",name:"Mimosa",price:"$11",glass:"Flute",garnish:"—",
   ing:[["3 oz","Champagne"],["3 oz","Orange juice"]],
   steps:["Champagne first, tilted.","Top with OJ. No stir."]},
 
  // ── Soju ──
- {cat:"Soju",name:"Soju Cocktail",note:"Mix 1–2 flavors: Peach · Kiwi · Passion Fruit · Lychee · Mango · Watermelon · Yogurt · Strawberry · Guava",chk:1,glass:"30 oz pitcher",garnish:"—",
+ {cat:"Soju",name:"Soju Cocktail",price:"$16",note:"Mix 1–2 flavors: Peach · Kiwi · Passion Fruit · Lychee · Mango · Watermelon · Yogurt · Strawberry · Guava",chk:1,glass:"30 oz pitcher",garnish:"—",
   ing:[["12 oz","Soju","1 bottle"],["4 oz","Flavor syrup","1–2 flavors"],["","Sprite","top"],["","Ice"]],
   steps:["Pitcher ⅓ ice.","Add soju + flavor(s).","Top with Sprite, stir.","Serve with soju glasses."]},
- {cat:"Soju",name:"Soju Cocktail Tower",chk:1,glass:"Tower",garnish:"—",
+ {cat:"Soju",name:"Soju Cocktail Tower",price:"$52",chk:1,glass:"Tower",garnish:"—",
   ing:[["","Soju cocktail","scale up pitcher recipe"],["","Ice core"]],
   steps:["Ice core in tower.","Batch soju cocktail, fill.","Serve with soju glasses."]},
- {cat:"Soju",name:"Soju Bottle",note:"Original · Zero Sugar · Peach · Yogurt · Apple · Strawberry · Apple Mango · Green Grape",glass:"Soju glasses",garnish:"—",
+ {cat:"Soju",name:"Soju Bottle",price:"$13",note:"Original · Zero Sugar · Peach · Yogurt · Apple · Strawberry · Apple Mango · Green Grape",glass:"Soju glasses",garnish:"—",
   ing:[["12 oz","Soju","chilled"]],
   steps:["Serve cold with a glass per drinker.","Check ID for everyone drinking."]},
- {cat:"Soju",name:"Sake / Yuzu Bomb",chk:1,glass:"Beer glass + sake shot",garnish:"—",
+ {cat:"Soju",name:"Sake / Yuzu Bomb",price:"$6.99",chk:1,glass:"Beer glass + sake shot",garnish:"—",
   ing:[["1","Bottled beer"],["1 shot","Sake or yuzu soju"]],
   steps:["Pour beer into glass.","Serve shot balanced on chopsticks over the glass."]},
 
  // ── Mocktails ── (ingredients per menu, $8)
- {cat:"Mocktails",name:"Raspberry Lemon Drop",chk:1,glass:"Highball",garnish:"Lemon wheel",
+ {cat:"Mocktails",name:"Raspberry Lemon Drop",price:"$8",chk:1,glass:"Highball",garnish:"Lemon wheel",
   ing:[["1 oz","Fresh lemon juice"],["1 oz","Raspberry syrup"],["1 oz","Coconut syrup"],["3 oz","Pineapple juice"],["","Ice"]],
   steps:["Shake everything with ice.","Pour into glass.","Lemon wheel."]},
- {cat:"Mocktails",name:"Strawberry Breeze",chk:1,glass:"Highball",garnish:"Strawberry",
+ {cat:"Mocktails",name:"Strawberry Breeze",price:"$8",chk:1,glass:"Highball",garnish:"Strawberry",
   ing:[["1.5 oz","Strawberry syrup"],["2 oz","Piña colada mix"],["2 oz","Sweet & sour"],["","Ice"]],
   steps:["Shake everything with ice.","Pour into glass.","Strawberry garnish."]},
- {cat:"Mocktails",name:"Ube Colada",chk:1,glass:"Highball",garnish:"Pineapple wedge",
+ {cat:"Mocktails",name:"Ube Colada",price:"$8",chk:1,glass:"Highball",garnish:"Pineapple wedge",
   ing:[["1 oz","Ube syrup"],["2 oz","Coconut cream"],["3 oz","Pineapple juice"],["","Ice"]],
   steps:["Shake hard with ice.","Pour into glass.","Pineapple wedge."]},
- {cat:"Mocktails",name:"Sweet Heart",chk:1,glass:"Highball",garnish:"Lime wheel",
+ {cat:"Mocktails",name:"Sweet Heart",price:"$8",chk:1,glass:"Highball",garnish:"Lime wheel",
   ing:[["1.5 oz","Peach syrup"],["3 oz","Sweet & sour"],["0.5 oz","Lime juice"],["","Sprite","splash"],["","Ice"]],
   steps:["Shake peach, sweet & sour, lime with ice.","Pour, top with a splash of Sprite.","Lime wheel."]},
- {cat:"Mocktails",name:"Mai Tai (Virgin)",chk:1,glass:"Rocks",garnish:"Orange slice & cherry",
+ {cat:"Mocktails",name:"Mai Tai (Virgin)",price:"$8",chk:1,glass:"Rocks",garnish:"Orange slice & cherry",
   ing:[["2.5 oz","Pineapple juice"],["2.5 oz","Orange juice"],["0.5 oz","Lemon juice"],["","Ice"]],
   steps:["Shake with ice.","Pour into glass.","Garnish."]},
- {cat:"Mocktails",name:"Sunrise (Virgin)",glass:"Highball",garnish:"Orange slice & cherry",
+ {cat:"Mocktails",name:"Sunrise (Virgin)",price:"$8",glass:"Highball",garnish:"Orange slice & cherry",
   ing:[["5 oz","Orange juice"],["0.5 oz","Grenadine"],["","Ice"]],
   steps:["Ice, OJ.","Pour grenadine slowly so it sinks.","Garnish."]},
 
  // ── Non-Alc ──
- {cat:"Non-Alc",name:"Fresh Lemonade",note:"Peach · Mango · Yogurt · Lychee · Passion Fruit · Kiwi · Watermelon · Guava · Strawberry",chk:1,glass:"Highball",garnish:"Lemon wheel",
+ {cat:"Non-Alc",name:"Fresh Lemonade",price:"$5.99",note:"Peach · Mango · Yogurt · Lychee · Passion Fruit · Kiwi · Watermelon · Guava · Strawberry",chk:1,glass:"Highball",garnish:"Lemon wheel",
   ing:[["1.5 oz","Fresh lemon juice"],["1 oz","Simple syrup"],["1 oz","Flavor syrup"],["4 oz","Water"],["","Ice"]],
   steps:["Shake lemon, syrup, flavor, water with ice.","Pour into glass.","Lemon wheel."]},
- {cat:"Non-Alc",name:"Shirley Temple",glass:"Highball",garnish:"Cherry",
+ {cat:"Non-Alc",name:"Shirley Temple",price:"$3.99",glass:"Highball",garnish:"Cherry",
   ing:[["6 oz","Sprite"],["0.5 oz","Grenadine"],["","Ice"]],
   steps:["Ice, Sprite.","Grenadine, stir lightly.","Cherry."]}
 ];
@@ -177,7 +179,7 @@ q.oninput=render;
 function card(d,open){
   const line=d.ing.filter(i=>!/^ice/i.test(i[1])).map(i=>i[1]).join(' · ');
   return `<details class="rc"${open?' open':''}><summary>
-    <div class="t">${d.name}${d.chk?'<span class="chk">CONFIRM</span>':''}<span class="chev">▶</span></div>
+    <div class="t">${d.name}${d.chk?'<span class="chk">CONFIRM</span>':''}${d.price?`<span class="pr">${d.price}</span>`:''}<span class="chev">▶</span></div>
     <div class="s">${d.glass} — ${line}</div></summary>
     <div class="body">${d.note?`<div class="note">${d.note}</div>`:''}
     <div class="meta"><button class="gl" data-g="${d.glass}">🥃 ${d.glass}</button><span>🍋 ${d.garnish}</span></div>

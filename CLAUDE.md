@@ -7,7 +7,7 @@ Owner: BJ (GitHub `jerrekt`). Sister sites: `jerrekt/seapot-menu` (customer menu
 - **Only `git push` when BJ says "push".** Commit locally, show a preview/screenshot, then wait.
 - Keep chat replies short; keep the page condensed (collapsed one-line cards, tap to expand).
 - Drinks/ingredients follow the customer menu (`seapot-menu`). Pour amounts not confirmed by BJ get `chk:1` → "CONFIRM" tag.
-- No prices in the guide (staff use the POS).
+- Guide shows prices; they must match the customer menu (`seapot-menu`). Any new drink or price change goes in **both** repos.
 
 ## Layout
 - `site/index.html` — single file. Recipes are the `D` array: `{cat,name,note?,chk?,glass,garnish,ing:[[amt,name,note?]],steps:[]}`.
