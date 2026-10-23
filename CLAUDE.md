@@ -23,6 +23,6 @@ Same as seapot-menu: CT 202 `menu-server`, nginx root `/opt/seapot-bar/site`, `s
 
 ## Open items
 - Recipes now follow the Seapot recipe book (photos, Oct 23). Cocktail/mocktail glasses and garnishes not in the book are unconfirmed.
-- Still CONFIRM: Sunrise (Virgin) grenadine amount, Fresh Lemonade, Mimosa, Shirley Temple.
+- Still CONFIRM: Fresh Lemonade pours, Mimosa.
 - Book drinks NOT on the customer menu (not added, need BJ's call + prices in both repos): Man-Gogo mocktail, Margarita, Mojito, Martini, Vodka Sun, Strawberry Lemon Drop, Soju Bomb.
 - Allergens need BJ's input on what's in the premixes before `ALLERGENS` is filled in the menu.

@@ -165,15 +165,15 @@ const D=[
  {cat:"Mocktails",name:"Mai Tai (Virgin)",price:"$8",glass:"Highball",garnish:"—",
   ing:[["half cup","Ice"],["2 oz","Mai Tai mix"],["0.5 oz","Pineapple juice"],["","Sprite + soda water","fill half & half"]],
   steps:["Half cup of ice, Mai Tai mix, pineapple juice.","Fill half Sprite + half soda water"]},
- {cat:"Mocktails",name:"Sunrise (Virgin)",price:"$8",chk:1,note:"Book grenadine reads \"Half ½ oz\"; confirm amount",glass:"Highball",garnish:"—",
-  ing:[["half cup","Ice"],["2 oz","Mai Tai mix"],["0.5 oz","Orange juice"],["¼ oz?","Grenadine","pour on top"],["","Sprite + soda water","fill half & half"]],
+ {cat:"Mocktails",name:"Sunrise (Virgin)",price:"$8",glass:"Highball",garnish:"—",
+  ing:[["half cup","Ice"],["2 oz","Mai Tai mix"],["0.5 oz","Orange juice"],["¼ oz","Grenadine","pour on top"],["","Sprite + soda water","fill half & half"]],
   steps:["Half cup of ice, Mai Tai mix, orange juice.","Pour grenadine on top.","Fill half Sprite + half soda water"]},
 
  // ── Non-Alc ──
- {cat:"Non-Alc",name:"Fresh Lemonade",price:"$5.99",note:"Peach · Mango · Yogurt · Lychee · Passion Fruit · Kiwi · Watermelon · Guava · Strawberry",chk:1,glass:"Highball",garnish:"Lemon wheel",
-  ing:[["1.5 oz","Fresh lemon juice"],["1 oz","Simple syrup"],["1 oz","Flavor syrup"],["4 oz","Water"],["","Ice"]],
-  steps:["Shake lemon, syrup, flavor, water with ice.","Pour into glass.","Lemon wheel."]},
- {cat:"Non-Alc",name:"Shirley Temple",price:"$3.99",chk:1,glass:"Highball",garnish:"Cherry",
+ {cat:"Non-Alc",name:"Fresh Lemonade",price:"$5.99",note:"Peach · Mango · Yogurt · Lychee · Passion Fruit · Kiwi · Watermelon · Guava · Strawberry",chk:1,glass:"Beer cup",garnish:"Lemon wheel",
+  ing:[["1.5 oz","Fresh lemon juice"],["1 oz","Flavor syrup"],["4 oz","Water"],["","Ice"]],
+  steps:["Shake lemon juice, flavor syrup and water with ice.","Pour into glass.","Lemon wheel."]},
+ {cat:"Non-Alc",name:"Shirley Temple",price:"$3.99",glass:"Soda cup",garnish:"Cherry",
   ing:[["6 oz","Sprite"],["0.5 oz","Grenadine"],["","Ice"]],
   steps:["Ice, Sprite.","Grenadine, stir lightly.","Cherry."]}
 ];
@@ -222,12 +222,16 @@ const GW={
   svg:`<svg viewBox="0 0 100 140"><path class="liq" d="M36 34 L36 112 L64 112 L64 34Z"/><path d="M47 30 L47 112 M53 30 L53 112" class="ice"/><rect x="34" y="14" width="32" height="104" rx="5"/><path d="M40 10 L60 10 L60 14 L40 14Z"/><path d="M66 102 L76 102 L76 110"/><path d="M22 118 L78 118 L82 128 L18 128Z"/></svg>`},
  soju:{name:"Soju Glasses",desc:"Small shot glasses · one per drinker",
   svg:`<svg viewBox="0 0 100 140"><path class="liq" d="M20 82 L22 112 L42 112 L44 82Z"/><path d="M17 66 L21 118 Q21 122 25 122 L39 122 Q43 122 43 118 L47 66"/><path class="liq" d="M56 82 L58 112 L78 112 L80 82Z"/><path d="M53 66 L57 118 Q57 122 61 122 L75 122 Q79 122 79 118 L83 66"/></svg>`},
+ pint:{name:"Beer Cup",desc:"Pint-style beer cup · fresh lemonade",
+  svg:`<svg viewBox="0 0 100 140"><path class="liq" d="M30 56 L33 124 L67 124 L70 56Z"/>${ICE}<path d="M27 30 L32 126 Q32 132 38 132 L62 132 Q68 132 68 126 L73 30"/></svg>`},
+ cup:{name:"Soda Cup",desc:"Regular soda cup · Shirley Temple",
+  svg:`<svg viewBox="0 0 100 140"><path class="liq" d="M30 50 L34 124 L66 124 L70 50Z"/>${ICE}<path d="M26 22 L32 126 Q32 132 38 132 L62 132 Q68 132 68 126 L74 22"/><path d="M23 22 H77"/></svg>`},
  bomb:{name:"Beer Glass + Shot",desc:"Beer in a pint, sake shot balanced on chopsticks",
   svg:`<svg viewBox="0 0 100 140"><path class="liq" d="M30 56 L33 124 L67 124 L70 56Z"/><path d="M27 40 L32 126 Q32 132 38 132 L62 132 Q68 132 68 126 L73 40"/><path d="M14 34 L86 30 M14 40 L86 36"/><path d="M42 12 L44 32 L56 32 L58 12"/><path class="liq" d="M43 20 L44 30 L56 30 L57 20Z"/></svg>`}
 };
 const gi=g=>`<span class="gi">${GW[glassKey(g)].svg}</span>`;
 function glassKey(g){g=g.toLowerCase();
-  return g.includes('pitcher')?'pitcher':g.includes('tower')?'tower':g.includes('soju')?'soju':g.includes('beer')?'bomb':
+  return g.includes('beer cup')?'pint':g.includes('soda cup')?'cup':g.includes('pitcher')?'pitcher':g.includes('tower')?'tower':g.includes('soju')?'soju':g.includes('beer')?'bomb':
          g.includes('hurricane')?'hurricane':g.includes('mug')?'mug':g.includes('flute')?'flute':g.includes('rocks')?'rocks':'highball';}
 const gm=document.getElementById('gm');
 function openGlass(label){
